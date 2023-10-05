@@ -9,6 +9,7 @@ import os
 env.user = 'ubuntu'
 env.hosts = ['ubuntu@3.85.148.98', '34.234.204.60']
 
+@task
 def do_deploy(archive_path):
     """ method to deploy"""
     try:
@@ -16,7 +17,6 @@ def do_deploy(archive_path):
             return False
         file_withex = os.path.basename(archive_path)
         file_noex, ex = os.path.splitext(file_withex)
-        run ('mkdir -p  /tmp/')
         put (archive_path, "/tmp/")
         run("rm -f {}".format(archive_path))
         run("mkdir -p /data/web_static/releases/{}/".format(file_noex))
