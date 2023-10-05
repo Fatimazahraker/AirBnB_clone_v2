@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/python3
 """  script (based on the file 1-pack_web_static.py"""
 
 
