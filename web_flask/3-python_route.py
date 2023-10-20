@@ -31,7 +31,7 @@ def c_text(text):
 def python_text(text='is cool'):
     """ despaly text"""
     text = text.replace('_', ' ')
-    return "C " + text
+    return "Python " + text
 
 
 if __name__ == "__main__":
