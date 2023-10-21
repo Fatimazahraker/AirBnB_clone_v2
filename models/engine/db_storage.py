@@ -12,6 +12,7 @@ from models.amenity import Amenity
 from models.review import Review
 from models.base_model import Base
 
+
 class DBStorage:
     """ class definition """
 
@@ -30,7 +31,7 @@ class DBStorage:
         self.__engine = create_engine(db_url, pool_pre_ping=True)
 
         if hb_env == "test":
-             Base.metadata.drop_all(self.__engine)
+            Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
                 """query all classes or specific one"""
@@ -68,3 +69,8 @@ class DBStorage:
         Base.metadata.create_all(self.__engine)
         Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
         self.__session = Session()
+
+    def close(self):
+        """ calls remove()
+        """
+        self.__session.close()
